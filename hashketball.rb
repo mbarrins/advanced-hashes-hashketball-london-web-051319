@@ -154,9 +154,10 @@ def player_hash
 end
 
 def num_points_scored(player)
-  game_hash.each do |location, team_data|
-    return team_data[:players][player][:points] if team_data[:players].has_key?(player)
-  end
+  # game_hash.each do |location, team_data|
+  #   return team_data[:players][player][:points] if team_data[:players].has_key?(player)
+  # end
+  player_hash[player][:points]
 end
 
 def shoe_size(player)
