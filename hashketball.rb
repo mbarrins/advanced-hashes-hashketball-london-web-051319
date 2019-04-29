@@ -149,25 +149,19 @@ end
 #
 # good_practices
 
-def player_hash
+def player_hash #hash of players with details
   game_hash.values.map {|location| location[:players]}.inject(:merge).to_h
 end
 
-def team_player_hash
+def team_player_hash #hash of team name with players and details
   game_hash.values.map {|location| [location[:team_name], location[:players]]}.to_h
 end
 
 def num_points_scored(player)
-  # game_hash.each do |location, team_data|
-  #   return team_data[:players][player][:points] if team_data[:players].has_key?(player)
-  # end
   player_hash[player][:points]
 end
 
 def shoe_size(player)
-  # game_hash.each do |location, team_data|
-  #   return team_data[:players][player][:shoe] if team_data[:players].has_key?(player)
-  # end
   player_hash[player][:shoe]
 end
 
