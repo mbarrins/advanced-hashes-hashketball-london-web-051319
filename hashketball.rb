@@ -153,6 +153,10 @@ def player_hash
   game_hash.values.map {|location| location[:players]}.inject(:merge).to_h
 end
 
+def team_player_hash
+  game_hash.values.map {|location| [location[:team_name], location[:players]]}.to_h
+end
+
 def num_points_scored(player)
   # game_hash.each do |location, team_data|
   #   return team_data[:players][player][:points] if team_data[:players].has_key?(player)
@@ -197,11 +201,7 @@ def big_shoe_rebounds
   max_shoe_player = ""
   max_shoe_rebounds = 0
 
-  player_hash = game_hash.values.map {|location| location[:players]}.flatten
-  # binding.pry
-  player_hash.each do |player|
-    player.each do |name, details|
-    # binding.pry
+  player_hash.each do |name, details|
       if max_shoe_size < details[:shoe]
         max_shoe_size = details[:shoe]
         max_shoe_player = name
