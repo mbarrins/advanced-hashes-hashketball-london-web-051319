@@ -153,7 +153,7 @@ def player_hash #hash of players with details
   game_hash.values.map {|location| location[:players]}.inject(:merge).to_h
 end
 
-def team_player_hash #hash of team name with players and details
+def team_player_hash #hash of team name with players
   game_hash.values.map {|location| [location[:team_name], location[:players]]}.to_h
 end
 
