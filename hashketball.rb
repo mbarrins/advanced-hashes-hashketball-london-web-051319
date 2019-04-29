@@ -198,20 +198,7 @@ def player_stats(player)
 end
 
 def big_shoe_rebounds
-  max_shoe_size = 0
-  max_shoe_player = ""
-  max_shoe_rebounds = 0
-
-  player_hash.each do |name, details|
-      if max_shoe_size < details[:shoe]
-        max_shoe_size = details[:shoe]
-        max_shoe_player = name
-        max_shoe_rebounds = details[:rebounds]
-      end
-    end
-  end
-
-  max_shoe_rebounds
+  player_hash.max_by{|player, details| details[:shoe]}[1][:rebounds]
 end
 
 def most_points_scored
