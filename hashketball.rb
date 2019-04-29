@@ -186,9 +186,10 @@ def player_numbers(team)
 end
 
 def player_stats(player)
-  game_hash.each do |location, team_data|
-    return team_data[:players][player] if team_data[:players].has_key?(player)
-  end
+  # game_hash.each do |location, team_data|
+  #   return team_data[:players][player] if team_data[:players].has_key?(player)
+  # end
+  player_hash[player]
 end
 
 def big_shoe_rebounds
