@@ -258,36 +258,5 @@ def player_with_longest_name
 end
 
 def long_name_steals_a_ton?
-  most_steals = ""
-  game_hash.values.map {|location| location[:players]}.flatten.each do |players|
-      most_steals = players.transform_values{|details| details[:steals]}.max_by{|name, steals| steals}[0]
-      # binding.pry
-  end
-  player_with_longest_name == most_steals
+  player_with_longest_name == player_hash.max_by{|player, details| details[:steals]}[0]
 end
-
-puts num_points_scored("Reggie Evans")
-puts num_points_scored("Brendan Haywood")
-puts
-puts shoe_size("Reggie Evans")
-puts shoe_size("Brendan Haywood")
-puts
-puts team_colors("Brooklyn Nets").inspect
-puts team_colors("Charlotte Hornets").inspect
-puts
-puts team_names.inspect
-puts
-puts player_numbers("Brooklyn Nets").inspect
-puts player_numbers("Charlotte Hornets").inspect
-puts
-puts player_stats("Reggie Evans").inspect
-puts player_stats("Brendan Haywood").inspect
-puts
-puts big_shoe_rebounds
-puts
-puts most_points_scored
-puts winning_team
-puts
-puts player_with_longest_name
-puts
-puts long_name_steals_a_ton?
