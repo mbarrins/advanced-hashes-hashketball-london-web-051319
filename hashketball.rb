@@ -172,9 +172,6 @@ def shoe_size(player)
 end
 
 def team_colors(team)
-  # game_hash.each do |location, team_data|
-  #   return team_data[:colors] if team_data[:team_name] == team
-  # end
   game_hash.values.map {|location| [location[:team_name], location[:colors]]}.to_h[team]
 end
 
