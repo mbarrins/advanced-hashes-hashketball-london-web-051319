@@ -215,35 +215,13 @@ def big_shoe_rebounds
 end
 
 def most_points_scored
-  max_points = 0
-  max_points_player = ""
-
-  player_hash = game_hash.values.map {|location| location[:players]}.flatten
-  # binding.pry
-  player_hash.each do |player|
-    player.each do |name, details|
-    # binding.pry
-      if max_points < details[:points]
-        max_points = details[:points]
-        max_points_player = name
-      end
-    end
-  end
-  max_points_player
+  player_hash.max_by{|player, details| details[:points]}[0]
 end
 
 def winning_team
-  team_name = ""
-  points = 0
-  game_hash.each do |location, team|
-    team_points = 0
-    team[:players].each {|player, details| team_points += details[:points]}
-    if team_points > points
-      points = team_points
-      team_name = team[:team_name]
-    end
-  end
-  team_name
+  team_player_hash.map do |team, players|
+    [team, players.reduce(0){|sum, (player,details)| sum + details[:points]}]
+  end.to_h.max_by{|team, points| points}[0]
 end
 
 def player_with_longest_name
